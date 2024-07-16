@@ -26,12 +26,13 @@
 </head>
 
 <body>
+
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="bg-light p-2 m-2">
-                        <h3 class="text-dark text-center">Students Data Managaement</h3>
+                        <h3 class="text-dark text-center">{button}Students Data Managaement</h3>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
