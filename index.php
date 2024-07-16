@@ -26,7 +26,6 @@
 </head>
 
 <body>
-    <h1>H1 at branch new1 </h1>
     <div class="container-xl">
         <div class="table-responsive">
             <div class="table-wrapper">
