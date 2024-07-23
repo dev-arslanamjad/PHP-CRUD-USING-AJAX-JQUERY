@@ -22,17 +22,24 @@
 	right: 18px;
 	top: -68px;
         }
+        .overflowww{
+             overflow-x: hidden;
+        }
+        .btntwo{
+            width: 50%;
+            margin-left: 11px;
+        }
     </style>
 </head>
 
 <body>
 
     <div class="container-xl">
-        <div class="table-responsive">
+        <div class="table-responsive overflowww">
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="bg-light p-2 m-2">
-                        <h3 class="text-dark text-center">btn btn btn Students Data Managaement</h3>
+                        <h3 class="text-dark text-center">Students Data Managaement</h3>
                     </div>
                     <div class="row">
                         <div class="col-sm-6">
@@ -42,8 +49,8 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-hover">
-                    <thead>
+                <table class="table table-striped table-hover" id="tablenew">
+                    <thead class="bg-dark text-white ">
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
@@ -213,11 +220,11 @@
                         tr += '<td>' + address + '</td>';
                         tr += '<td><div class="d-flex">';
                         tr +=
-                            '<a href="#editEmployeeModal" class="btn btn-primary" data-toggle="modal" onclick=viewEmployee("' +
+                            '<a href="#editEmployeeModal" class="btn btn-primary btntwo" data-toggle="modal" onclick=viewEmployee("' +
                             id +
                             '")><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>';
                         tr +=
-                            '<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal" onclick=$("#delete_id").val("' +
+                            '<a href="#deleteEmployeeModal" class="btn btn-danger btntwo" data-toggle="modal" onclick=$("#delete_id").val("' +
                             id +
                             '")><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>';
                         tr += '</div></td>';
@@ -249,7 +256,7 @@
                     var response = JSON.parse(data);
                     $('#addEmployeeModal').modal('hide');
                     employeeList();
-                    toastr["success"]("Information has been updated", "success", {setTimeout: 5000});
+                    toastr["success"]("New Employee has been Added", "success", {setTimeout: 5000});
                 }
                 
 
@@ -284,7 +291,26 @@
                     var response = JSON.parse(data);
                     $('#editEmployeeModal').modal('hide');
                     employeeList();
-                    alert(response.message);
+                    toastr["info"]("Information Updated", "User Edited")
+
+                    toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
                 }
 
             })
@@ -324,12 +350,41 @@
                 success: function (data) {
                     var response = JSON.parse(data);
                     employeeList();
-                    alert(response.message);
+                    toastr["error"]("User Deleted", "Successfully")
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
                 }
             })
         }
     </script>
-
+<script>
+$(document).ready(function() {
+    $('#tablenew').DataTable({
+        "paging": true,         // Enable pagination
+        "lengthChange": false,  // Disable length change
+        "searching": true,      // Enable search box
+        "ordering": true,       // Enable ordering
+        "info": true,           // Enable info text
+        "autoWidth": false      // Disable auto width calculation
+    });
+});
+</script>
 </body>
 
 </html>
